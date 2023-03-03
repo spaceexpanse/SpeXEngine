@@ -38,7 +38,7 @@ const writeJSONFile = (object: Object, filepath: string): Promise<void> => {
 
 const addSpacesToPascalCase = (pascalCaseName: string): string => {
   let name = pascalCaseName.replace(/([A-Z]+[a-z]|\d+)/g, ' $1');
-  name = name.substring(1);
+  name = name.at(0) === ' ' ? name.substring(1) : name;
   return name;
 };
 
