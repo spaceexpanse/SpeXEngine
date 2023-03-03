@@ -13,6 +13,7 @@
 #include "GDCore/String.h"
 namespace gd {
 class AbstractFileSystem;
+class Project;
 }
 
 namespace gd {
@@ -29,11 +30,12 @@ namespace gd {
  */
 class GD_CORE_API ResourcesMergingHelper : public ArbitraryResourceWorker {
  public:
-  ResourcesMergingHelper(gd::AbstractFileSystem& fileSystem)
+  ResourcesMergingHelper(gd::Project &project_, gd::AbstractFileSystem& fileSystem)
       : ArbitraryResourceWorker(),
         preserveDirectoriesStructure(false),
         preserveAbsoluteFilenames(false),
-        fs(fileSystem){};
+        fs(fileSystem),
+        project(project_){};
   virtual ~ResourcesMergingHelper(){};
 
   /**
@@ -83,7 +85,9 @@ class GD_CORE_API ResourcesMergingHelper : public ArbitraryResourceWorker {
 
  protected:
   void SetNewFilename(gd::String oldFilename, gd::String newFilename);
+  void ExposeResourceAsFile(gd::String &resourceName);
 
+  gd::Project &project;
   std::map<gd::String, gd::String> oldFilenames;
   std::map<gd::String, gd::String> newFilenames;
   gd::String baseDirectory;

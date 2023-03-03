@@ -128,6 +128,12 @@ export default class LocalEventsFunctionsExtensionWriter {
         );
 
         const serializedObject = serializeToObjectAsset(project, clonedObject);
+        // Resource names are changed by copyObjectResourcesTo so they don't
+        // match any project resource.
+        serializedObject.objectAssets.forEach(asset => asset.resources.forEach(resource => {
+          resource.file = resource.name;
+        }));
+
         return writeJSONFile(
           serializedObject,
           path.join(

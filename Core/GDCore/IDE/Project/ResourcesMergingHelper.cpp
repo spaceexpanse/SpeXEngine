@@ -9,6 +9,8 @@
 #include "GDCore/CommonTools.h"
 #include "GDCore/IDE/AbstractFileSystem.h"
 #include "GDCore/IDE/NewNameGenerator.h"
+#include "GDCore/Project/ResourcesManager.h"
+#include "GDCore/Project/Project.h"
 #include "GDCore/String.h"
 #include "GDCore/Tools/Localization.h"
 #include "GDCore/Tools/Log.h"
@@ -16,35 +18,43 @@
 namespace gd {
 
 void ResourcesMergingHelper::ExposeImage(gd::String &imageName) {
-  ExposeFile(imageName);
+  ExposeResourceAsFile(imageName);
 }
 
 void ResourcesMergingHelper::ExposeAudio(gd::String &audioName) {
-  ExposeFile(audioName);
+  ExposeResourceAsFile(audioName);
 }
 
 void ResourcesMergingHelper::ExposeFont(gd::String &fontName) {
-  ExposeFile(fontName);
+  ExposeResourceAsFile(fontName);
 }
 
 void ResourcesMergingHelper::ExposeJson(gd::String &jsonName) {
-  ExposeFile(jsonName);
+  ExposeResourceAsFile(jsonName);
 }
 
 void ResourcesMergingHelper::ExposeTilemap(gd::String &tilemapName) {
-  ExposeFile(tilemapName);
+  ExposeResourceAsFile(tilemapName);
 }
 
 void ResourcesMergingHelper::ExposeTileset(gd::String &tilesetName) {
-  ExposeFile(tilesetName);
+  ExposeResourceAsFile(tilesetName);
 }
 
 void ResourcesMergingHelper::ExposeVideo(gd::String &videoName) {
-  ExposeFile(videoName);
+  ExposeResourceAsFile(videoName);
 }
 
 void ResourcesMergingHelper::ExposeBitmapFont(gd::String &bitmapFontName) {
-  ExposeFile(bitmapFontName);
+  ExposeResourceAsFile(bitmapFontName);
+}
+
+void ResourcesMergingHelper::ExposeResourceAsFile(gd::String &resourceName) {
+
+    auto& resource = project.GetResourcesManager().GetResource(resourceName);
+    gd::String file = resource.GetFile();
+    ExposeFile(file);
+    resourceName = file;
 }
 
 void ResourcesMergingHelper::ExposeFile(gd::String& resourceFilename) {

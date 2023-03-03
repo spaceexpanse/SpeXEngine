@@ -32,7 +32,7 @@ bool ProjectResourcesCopier::CopyAllResourcesTo(
             << destinationDirectory << "..." << std::endl;
 
   // Get the resources to be copied
-  gd::ResourcesMergingHelper resourcesMergingHelper(fs);
+  gd::ResourcesMergingHelper resourcesMergingHelper(originalProject, fs);
   resourcesMergingHelper.SetBaseDirectory(projectDirectory);
   resourcesMergingHelper.PreserveDirectoriesStructure(
       preserveDirectoryStructure);
@@ -60,7 +60,7 @@ bool ProjectResourcesCopier::CopyObjectResourcesTo(
             << destinationDirectory << "..." << std::endl;
 
   // Get the resources to be copied
-  gd::ResourcesMergingHelper resourcesMergingHelper(fs);
+  gd::ResourcesMergingHelper resourcesMergingHelper(project, fs);
   resourcesMergingHelper.SetBaseDirectory(projectDirectory);
   resourcesMergingHelper.PreserveDirectoriesStructure(false);
   resourcesMergingHelper.PreserveAbsoluteFilenames(false);
@@ -163,6 +163,7 @@ void ProjectResourcesCopier::CopyResourcesTo(
            resourcesNewFileNames.begin();
        it != resourcesNewFileNames.end();
        ++it) {
+      std::cout << it->first << " --> " << it->second << std::endl;
     if (!it->first.empty()) {
       // Create the destination filename
       gd::String destinationFile = it->second;
