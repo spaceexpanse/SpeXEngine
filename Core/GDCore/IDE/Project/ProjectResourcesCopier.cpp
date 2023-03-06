@@ -10,6 +10,7 @@
 #include "GDCore/IDE/AbstractFileSystem.h"
 #include "GDCore/IDE/Project/ResourcesAbsolutePathChecker.h"
 #include "GDCore/IDE/Project/ResourcesMergingHelper.h"
+#include "GDCore/IDE/Project/AssetResourcesMergingHelper.h"
 #include "GDCore/Project/Project.h"
 #include "GDCore/Project/Object.h"
 #include "GDCore/Tools/Localization.h"
@@ -32,7 +33,7 @@ bool ProjectResourcesCopier::CopyAllResourcesTo(
             << destinationDirectory << "..." << std::endl;
 
   // Get the resources to be copied
-  gd::ResourcesMergingHelper resourcesMergingHelper(originalProject, fs);
+  gd::ResourcesMergingHelper resourcesMergingHelper(fs);
   resourcesMergingHelper.SetBaseDirectory(projectDirectory);
   resourcesMergingHelper.PreserveDirectoriesStructure(
       preserveDirectoryStructure);
@@ -60,7 +61,7 @@ bool ProjectResourcesCopier::CopyObjectResourcesTo(
             << destinationDirectory << "..." << std::endl;
 
   // Get the resources to be copied
-  gd::ResourcesMergingHelper resourcesMergingHelper(project, fs);
+  gd::AssetResourcesMergingHelper resourcesMergingHelper(project, fs);
   resourcesMergingHelper.SetBaseDirectory(projectDirectory);
   resourcesMergingHelper.PreserveDirectoriesStructure(false);
   resourcesMergingHelper.PreserveAbsoluteFilenames(false);

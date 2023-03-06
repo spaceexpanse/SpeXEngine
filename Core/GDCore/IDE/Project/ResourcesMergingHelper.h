@@ -13,7 +13,6 @@
 #include "GDCore/String.h"
 namespace gd {
 class AbstractFileSystem;
-class Project;
 }
 
 namespace gd {
@@ -30,12 +29,11 @@ namespace gd {
  */
 class GD_CORE_API ResourcesMergingHelper : public ArbitraryResourceWorker {
  public:
-  ResourcesMergingHelper(gd::Project &project_, gd::AbstractFileSystem& fileSystem)
+  ResourcesMergingHelper(gd::AbstractFileSystem& fileSystem)
       : ArbitraryResourceWorker(),
         preserveDirectoriesStructure(false),
         preserveAbsoluteFilenames(false),
-        fs(fileSystem),
-        project(project_){};
+        fs(fileSystem){};
   virtual ~ResourcesMergingHelper(){};
 
   /**
@@ -74,21 +72,17 @@ class GD_CORE_API ResourcesMergingHelper : public ArbitraryResourceWorker {
    * filenames.
    */
   virtual void ExposeFile(gd::String& resource) override;
-  void ExposeImage(gd::String &imageName) override;
-  void ExposeAudio(gd::String &audioName) override;
-  void ExposeFont(gd::String &fontName) override;
-  void ExposeJson(gd::String &jsonName) override;
-  void ExposeTilemap(gd::String &tilemapName) override;
-  void ExposeTileset(gd::String &tilesetName) override;
-  void ExposeVideo(gd::String &videoName) override;
-  void ExposeBitmapFont(gd::String &bitmapFontName) override;
 
  protected:
   void SetNewFilename(gd::String oldFilename, gd::String newFilename);
-  void ExposeResourceAsFile(gd::String &resourceName);
 
-  gd::Project &project;
+  /**
+   * Original file names that can be accessed by their new name.
+   */
   std::map<gd::String, gd::String> oldFilenames;
+  /**
+   * New file names that can be accessed by their original name.
+   */
   std::map<gd::String, gd::String> newFilenames;
   gd::String baseDirectory;
   bool preserveDirectoriesStructure;  ///< If set to true, the directory
