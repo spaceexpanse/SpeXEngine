@@ -2756,6 +2756,14 @@ interface ArbitraryResourceWorkerJS {
     void ExposeFile([Ref] DOMString file);
 };
 
+interface ResourcesMergingHelper {
+    void ResourcesMergingHelper([Ref] AbstractFileSystem fs);
+
+    void SetBaseDirectory([Const] DOMString basePath);
+    [Ref] MapStringString GetAllResourcesOldAndNewFilename();
+};
+ResourcesMergingHelper implements ArbitraryResourceWorker;
+
 interface ResourcesRenamer {
     void ResourcesRenamer([Const, Ref] MapStringString oldToNewNames);
 };
