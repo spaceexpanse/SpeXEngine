@@ -38,7 +38,7 @@ const writeJSONFile = (object: Object, filepath: string): Promise<void> => {
 
 const addSpacesToPascalCase = (pascalCaseName: string): string => {
   let name = pascalCaseName.replace(/([A-Z]+[a-z]|\d+)/g, ' $1');
-  name = name.at(0) === ' ' ? name.substring(1) : name;
+  name = name.charAt(0) === ' ' ? name.substring(1) : name;
   return name;
 };
 
@@ -130,9 +130,11 @@ export default class LocalEventsFunctionsExtensionWriter {
         const serializedObject = serializeToObjectAsset(project, clonedObject);
         // Resource names are changed by copyObjectResourcesTo so they don't
         // match any project resource.
-        serializedObject.objectAssets.forEach(asset => asset.resources.forEach(resource => {
-          resource.file = resource.name;
-        }));
+        serializedObject.objectAssets.forEach(asset =>
+          asset.resources.forEach(resource => {
+            resource.file = resource.name;
+          })
+        );
 
         return writeJSONFile(
           serializedObject,
