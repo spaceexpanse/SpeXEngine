@@ -124,7 +124,7 @@ describe('gdjs.evtTools.object', function () {
     );
   });
 
-  it.only('can create an instance and keep all instances picked', function () {
+  it('can create an instance and only pick this one when all instances were picked', function () {
     const runtimeGame = gdjs.getPixiRuntimeGame();
     const runtimeScene = new gdjs.TestRuntimeScene(runtimeGame);
 
@@ -145,9 +145,9 @@ describe('gdjs.evtTools.object', function () {
       ''
     );
 
-    // All instances are still picked.
+    // Only the created instance is picked.
     expect(getInstancesIds(pickedObjectList.get('MyObjectA'))).to.eql(
-      getInstancesIds([objectA1, objectA2, newObjectA])
+      getInstancesIds([newObjectA])
     );
   });
 
@@ -185,7 +185,7 @@ describe('gdjs.evtTools.object', function () {
     );
   });
 
-  it('can create an instance and keep all instances picked for a group', function () {
+  it('can create an instance and only pick this one when all instances were picked for a group', function () {
     const runtimeGame = gdjs.getPixiRuntimeGame();
     const runtimeScene = new gdjs.TestRuntimeScene(runtimeGame);
 
@@ -209,12 +209,12 @@ describe('gdjs.evtTools.object', function () {
       ''
     );
 
-    // All instances are still picked.
+    // Only the created instance is picked.
     expect(getInstancesIds(pickedObjectList.get('MyObjectA'))).to.eql(
-      getInstancesIds([objectA1, objectA2, newObjectA])
+      getInstancesIds([newObjectA])
     );
     expect(getInstancesIds(pickedObjectList.get('MyObjectB'))).to.eql(
-      getInstancesIds([objectB1])
+      getInstancesIds([])
     );
   });
 });
