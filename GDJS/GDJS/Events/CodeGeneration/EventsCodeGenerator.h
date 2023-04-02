@@ -319,6 +319,9 @@ class EventsCodeGenerator : public gd::EventsCodeGenerator {
                                     const gd::String& type,
                                     gd::EventsCodeGenerationContext& context);
 
+  virtual gd::String GetObjectMapName(const gd::String &objectName,
+                                      gd::EventsCodeGenerationContext &context);
+
   virtual gd::String GenerateNegatedPredicat(const gd::String& predicat) const {
     return "!(" + predicat + ")";
   };

@@ -594,6 +594,12 @@ class GD_CORE_API EventsCodeGenerator {
     return "fakeObjectListOf_" + objectName;
   }
 
+  // TODO Documentation
+  virtual gd::String GetObjectMapName(const gd::String &objectName,
+                                      gd::EventsCodeGenerationContext &context) {
+    return "fakeObjectListOf_" + objectName;
+  }
+
   /**
    * \brief Generate the code to reference an object which is
    * in an empty/null state.
