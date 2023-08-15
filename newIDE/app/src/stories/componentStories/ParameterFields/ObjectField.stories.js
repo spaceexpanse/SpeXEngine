@@ -23,7 +23,7 @@ export const Default = () => (
     render={(value, onChange) => (
       <ObjectField
         project={testProject.project}
-        scope={{ layout: testProject.testLayout }}
+        scope={{ project: testProject.project, layout: testProject.testLayout }}
         globalObjectsContainer={testProject.project}
         objectsContainer={testProject.testLayout}
         value={value}
@@ -39,7 +39,7 @@ export const NonExistingObject = () => (
     render={(value, onChange) => (
       <ObjectField
         project={testProject.project}
-        scope={{ layout: testProject.testLayout }}
+        scope={{ project: testProject.project, layout: testProject.testLayout }}
         globalObjectsContainer={testProject.project}
         objectsContainer={testProject.testLayout}
         value={value}
@@ -68,7 +68,7 @@ export const WrongObjectType = () => {
       render={(value, onChange) => (
         <ObjectField
           project={testProject.project}
-          scope={{ layout: testProject.testLayout }}
+          scope={{ project: testProject.project, layout: testProject.testLayout }}
           globalObjectsContainer={testProject.project}
           objectsContainer={testProject.testLayout}
           instructionMetadata={instructionMetadata}
@@ -100,7 +100,7 @@ export const WithRequiredCapability = () => {
       render={(value, onChange) => (
         <ObjectField
           project={testProject.project}
-          scope={{ layout: testProject.testLayout }}
+          scope={{ project: testProject.project, layout: testProject.testLayout }}
           globalObjectsContainer={testProject.project}
           objectsContainer={testProject.testLayout}
           instructionMetadata={instructionMetadata}
