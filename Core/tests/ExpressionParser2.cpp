@@ -182,7 +182,7 @@ TEST_CASE("ExpressionParser2", "[common][events]") {
       node->Visit(validator);
       REQUIRE(validator.GetFatalErrors().size() == 1);
       REQUIRE(validator.GetFatalErrors()[0]->GetMessage() ==
-              "Variables must be surrounded by VariableString().");
+              "No variable or object with this name found.");
       REQUIRE(validator.GetFatalErrors()[0]->GetStartPosition() == 0);
     }
     {
@@ -193,7 +193,7 @@ TEST_CASE("ExpressionParser2", "[common][events]") {
       node->Visit(validator);
       REQUIRE(validator.GetFatalErrors().size() == 1);
       REQUIRE(validator.GetFatalErrors()[0]->GetMessage() ==
-              "Variables must be surrounded by VariableString().");
+              "No variable or object with this name found.");
       REQUIRE(validator.GetFatalErrors()[0]->GetStartPosition() == 0);
     }
     {
@@ -394,8 +394,7 @@ TEST_CASE("ExpressionParser2", "[common][events]") {
       node->Visit(validator);
       REQUIRE(validator.GetFatalErrors().size() == 4);
       REQUIRE(validator.GetFatalErrors()[0]->GetMessage() ==
-              "You must wrap your text inside double quotes "
-              "(example: \"Hello world\").");
+              "This variable does not exist on this object or group.");
       REQUIRE(validator.GetFatalErrors()[1]->GetMessage() ==
               "You must add the operator + between texts or expressions. "
               "For example: \"Your name: \" + VariableString(PlayerName).");
@@ -731,7 +730,7 @@ TEST_CASE("ExpressionParser2", "[common][events]") {
       node->Visit(validator);
       REQUIRE(validator.GetFatalErrors().size() == 1);
       REQUIRE(validator.GetFatalErrors()[0]->GetMessage() ==
-              "Variables must be surrounded by Variable().");
+              "No variable or object with this name found.");
       REQUIRE(validator.GetFatalErrors()[0]->GetStartPosition() == 0);
     }
     {
@@ -742,7 +741,7 @@ TEST_CASE("ExpressionParser2", "[common][events]") {
       node->Visit(validator);
       REQUIRE(validator.GetFatalErrors().size() == 1);
       REQUIRE(validator.GetFatalErrors()[0]->GetMessage() ==
-              "Variables must be surrounded by Variable().");
+              "No variable or object with this name found.");
       REQUIRE(validator.GetFatalErrors()[0]->GetStartPosition() == 0);
     }
     {
