@@ -68,7 +68,10 @@ export const WrongObjectType = () => {
       render={(value, onChange) => (
         <ObjectField
           project={testProject.project}
-          scope={{ project: testProject.project, layout: testProject.testLayout }}
+          scope={{
+            project: testProject.project,
+            layout: testProject.testLayout,
+          }}
           globalObjectsContainer={testProject.project}
           objectsContainer={testProject.testLayout}
           instructionMetadata={instructionMetadata}
@@ -100,7 +103,10 @@ export const WithRequiredCapability = () => {
       render={(value, onChange) => (
         <ObjectField
           project={testProject.project}
-          scope={{ project: testProject.project, layout: testProject.testLayout }}
+          scope={{
+            project: testProject.project,
+            layout: testProject.testLayout,
+          }}
           globalObjectsContainer={testProject.project}
           objectsContainer={testProject.testLayout}
           instructionMetadata={instructionMetadata}

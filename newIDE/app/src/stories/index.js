@@ -1435,7 +1435,10 @@ storiesOf('ParameterFields', module)
       render={(value, onChange) => (
         <ExpressionField
           project={testProject.project}
-          scope={{ project: testProject.project, layout: testProject.testLayout }}
+          scope={{
+            project: testProject.project,
+            layout: testProject.testLayout,
+          }}
           globalObjectsContainer={testProject.project}
           objectsContainer={testProject.testLayout}
           value={value}
@@ -1453,7 +1456,10 @@ storiesOf('ParameterFields', module)
       render={(value, onChange) => (
         <ExpressionField
           project={testProject.project}
-          scope={{ project: testProject.project, layout: testProject.testLayout }}
+          scope={{
+            project: testProject.project,
+            layout: testProject.testLayout,
+          }}
           globalObjectsContainer={testProject.project}
           objectsContainer={testProject.testLayout}
           value={value}
@@ -1469,7 +1475,10 @@ storiesOf('ParameterFields', module)
       render={(value, onChange) => (
         <StringField
           project={testProject.project}
-          scope={{ project: testProject.project, layout: testProject.testLayout }}
+          scope={{
+            project: testProject.project,
+            layout: testProject.testLayout,
+          }}
           globalObjectsContainer={testProject.project}
           objectsContainer={testProject.testLayout}
           value={value}
@@ -1505,7 +1514,10 @@ storiesOf('ParameterFields', module)
       render={(value, onChange) => (
         <LayerField
           project={testProject.project}
-          scope={{ project: testProject.project, layout: testProject.testLayout }}
+          scope={{
+            project: testProject.project,
+            layout: testProject.testLayout,
+          }}
           globalObjectsContainer={testProject.project}
           objectsContainer={testProject.testLayout}
           value={value}
@@ -1519,7 +1531,7 @@ storiesOf('ParameterFields', module)
       initialValue={'"GUI"'}
       render={(value, onChange) => (
         <LayerField
-          scope={{project: testProject.project}}
+          scope={{ project: testProject.project }}
           value={value}
           onChange={onChange}
           globalObjectsContainer={testProject.project}
@@ -1534,7 +1546,10 @@ storiesOf('ParameterFields', module)
       render={(value, onChange) => (
         <SceneNameField
           project={testProject.project}
-          scope={{ project: testProject.project, layout: testProject.testLayout }}
+          scope={{
+            project: testProject.project,
+            layout: testProject.testLayout,
+          }}
           globalObjectsContainer={testProject.project}
           objectsContainer={testProject.testLayout}
           value={value}
@@ -1548,7 +1563,7 @@ storiesOf('ParameterFields', module)
       initialValue={'"TestLayout"'}
       render={(value, onChange) => (
         <SceneNameField
-          scope={{project: testProject.project}}
+          scope={{ project: testProject.project }}
           value={value}
           onChange={onChange}
           globalObjectsContainer={testProject.project}
@@ -1563,7 +1578,7 @@ storiesOf('ParameterFields', module)
       render={(value, onChange) => (
         <KeyField
           project={testProject.project}
-          scope={{project: testProject.project}}
+          scope={{ project: testProject.project }}
           value={value}
           onChange={onChange}
           globalObjectsContainer={testProject.project}
@@ -1578,7 +1593,7 @@ storiesOf('ParameterFields', module)
       render={(value, onChange) => (
         <MouseField
           project={testProject.project}
-          scope={{project: testProject.project}}
+          scope={{ project: testProject.project }}
           value={value}
           onChange={onChange}
           globalObjectsContainer={testProject.project}
@@ -1593,7 +1608,10 @@ storiesOf('ParameterFields', module)
       render={(value, onChange) => (
         <SceneVariableField
           project={testProject.project}
-          scope={{ project: testProject.project, layout: testProject.testLayout }}
+          scope={{
+            project: testProject.project,
+            layout: testProject.testLayout,
+          }}
           globalObjectsContainer={testProject.project}
           objectsContainer={testProject.testLayout}
           value={value}
@@ -1607,7 +1625,7 @@ storiesOf('ParameterFields', module)
       initialValue={'Variable1'}
       render={(value, onChange) => (
         <SceneVariableField
-          scope={{project: testProject.project}}
+          scope={{ project: testProject.project }}
           value={value}
           onChange={onChange}
           globalObjectsContainer={testProject.project}
@@ -1621,7 +1639,7 @@ storiesOf('ParameterFields', module)
       initialValue={'Variable1'}
       render={(value, onChange) => (
         <ObjectVariableField
-          scope={{project: testProject.project}}
+          scope={{ project: testProject.project }}
           value={value}
           onChange={onChange}
           globalObjectsContainer={testProject.project}
@@ -1635,7 +1653,7 @@ storiesOf('ParameterFields', module)
       initialValue={'"123;342;345"'}
       render={(value, onChange) => (
         <ColorExpressionField
-          scope={{project: testProject.project}}
+          scope={{ project: testProject.project }}
           value={value}
           onChange={onChange}
           globalObjectsContainer={testProject.project}
@@ -1649,7 +1667,7 @@ storiesOf('ParameterFields', module)
       initialValue={'"123;342;345"'}
       render={(value, onChange) => (
         <ColorExpressionField
-          scope={{project: testProject.project}}
+          scope={{ project: testProject.project }}
           value={value}
           onChange={onChange}
           globalObjectsContainer={testProject.project}
@@ -1664,7 +1682,7 @@ storiesOf('ParameterFields', module)
       initialValue={''}
       render={(value, onChange) => (
         <TrueFalseField
-          scope={{project: testProject.project}}
+          scope={{ project: testProject.project }}
           value={value}
           onChange={onChange}
           globalObjectsContainer={testProject.project}
@@ -1679,7 +1697,7 @@ storiesOf('ParameterFields', module)
       initialValue={''}
       render={(value, onChange) => (
         <YesNoField
-          scope={{project: testProject.project}}
+          scope={{ project: testProject.project }}
           value={value}
           onChange={onChange}
           globalObjectsContainer={testProject.project}
@@ -1694,7 +1712,7 @@ storiesOf('ParameterFields', module)
       initialValue={''}
       render={(value, onChange) => (
         <ForceMultiplierField
-          scope={{project: testProject.project}}
+          scope={{ project: testProject.project }}
           value={value}
           onChange={onChange}
           globalObjectsContainer={testProject.project}
@@ -1708,7 +1726,7 @@ storiesOf('ParameterFields', module)
       initialValue={'0.8'}
       render={(value, onChange) => (
         <ForceMultiplierField
-          scope={{project: testProject.project}}
+          scope={{ project: testProject.project }}
           value={value}
           onChange={onChange}
           globalObjectsContainer={testProject.project}
@@ -2216,7 +2234,7 @@ storiesOf('InstructionSelector', module)
         selectedType=""
         onChoose={action('Instruction chosen')}
         isCondition
-        scope={{project: testProject.project}}
+        scope={{ project: testProject.project }}
       />
     </FixedHeightFlexContainer>
   ))
@@ -2226,7 +2244,7 @@ storiesOf('InstructionSelector', module)
         selectedType=""
         onChoose={action('Instruction chosen')}
         isCondition={false}
-        scope={{project: testProject.project}}
+        scope={{ project: testProject.project }}
       />
     </FixedHeightFlexContainer>
   ));
@@ -2244,7 +2262,10 @@ storiesOf('InstructionOrObjectSelector', module)
               <InstructionOrObjectSelector
                 style={{ flex: 1, display: 'flex', flexDirection: 'column' }} // TODO
                 project={testProject.project}
-                scope={{ project: testProject.project, layout: testProject.testLayout }}
+                scope={{
+                  project: testProject.project,
+                  layout: testProject.testLayout,
+                }}
                 currentTab={value}
                 onChangeTab={onChange}
                 globalObjectsContainer={testProject.project}
@@ -2274,7 +2295,10 @@ storiesOf('InstructionOrObjectSelector', module)
               <InstructionOrObjectSelector
                 style={{ flex: 1, display: 'flex', flexDirection: 'column' }} // TODO
                 project={testProject.project}
-                scope={{ project: testProject.project, layout: testProject.testLayout }}
+                scope={{
+                  project: testProject.project,
+                  layout: testProject.testLayout,
+                }}
                 currentTab={value}
                 onChangeTab={onChange}
                 globalObjectsContainer={testProject.project}
@@ -2377,7 +2401,10 @@ storiesOf('InstructionEditorMenu', module)
           <InstructionEditorMenu
             open
             project={testProject.project}
-            scope={{ project: testProject.project, layout: testProject.testLayout }}
+            scope={{
+              project: testProject.project,
+              layout: testProject.testLayout,
+            }}
             globalObjectsContainer={testProject.project}
             objectsContainer={testProject.testLayout}
             isCondition
