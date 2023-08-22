@@ -12,12 +12,14 @@ import PickAxeIcon from '../../../UI/CustomSvgIcons/PickAxe';
 import SchoolIcon from '../../../UI/CustomSvgIcons/School';
 import GoogleControllerIcon from '../../../UI/CustomSvgIcons/GoogleController';
 import WebIcon from '../../../UI/CustomSvgIcons/Web';
-import Sun from '../../../UI/CustomSvgIcons/Sun';
-import Store from '../../../UI/CustomSvgIcons/Store';
+import UsersIcon from '../../../UI/CustomSvgIcons/Users';
+import SunIcon from '../../../UI/CustomSvgIcons/Sun';
+import StoreIcon from '../../../UI/CustomSvgIcons/Store';
 import Preferences from '../../../UI/CustomSvgIcons/Preferences';
 import GDevelopGLogo from '../../../UI/CustomSvgIcons/GDevelopGLogo';
 import GDevelopThemeContext from '../../../UI/Theme/GDevelopThemeContext';
 import Paper from '../../../UI/Paper';
+import AuthenticatedUserContext from '../../../Profile/AuthenticatedUserContext';
 
 export const styles = {
   desktopMenu: {
@@ -56,7 +58,8 @@ export type HomeTab =
   | 'learn'
   | 'play'
   | 'community'
-  | 'shop';
+  | 'shop'
+  | 'team-view';
 
 const tabs: {
   label: React.Node,
@@ -68,7 +71,7 @@ const tabs: {
     label: <Trans>Get Started</Trans>,
     tab: 'get-started',
     id: 'home-get-started-tab',
-    getIcon: color => <Sun fontSize="small" color={color} />,
+    getIcon: color => <SunIcon fontSize="small" color={color} />,
   },
   {
     label: <Trans>Build</Trans>,
@@ -80,7 +83,7 @@ const tabs: {
     label: <Trans>Shop</Trans>,
     tab: 'shop',
     id: 'home-shop-tab',
-    getIcon: color => <Store fontSize="small" color={color} />,
+    getIcon: color => <StoreIcon fontSize="small" color={color} />,
   },
   {
     label: <Trans>Learn</Trans>,
@@ -101,6 +104,12 @@ const tabs: {
     getIcon: color => <WebIcon fontSize="small" color={color} />,
   },
 ];
+const teamViewTab = {
+  label: <Trans>Classrooms</Trans>,
+  tab: 'team-view',
+  id: 'team-view-tab',
+  getIcon: color => <UsersIcon fontSize="small" color={color} />,
+};
 type Props = {|
   setActiveTab: HomeTab => void,
   activeTab: HomeTab,
@@ -117,11 +126,15 @@ export const HomePageMenu = ({
   const windowWidth = useResponsiveWindowWidth();
   const isMobileOrSmallScreen =
     windowWidth === 'small' || windowWidth === 'medium';
-  const GDevelopTheme = React.useContext(GDevelopThemeContext);
+  const gdevelopTheme = React.useContext(GDevelopThemeContext);
+  const { profile } = React.useContext(AuthenticatedUserContext);
+  const displayTeamViewTab = profile && profile.isTeacher;
   const [
     isHomePageMenuDrawerOpen,
     setIsHomePageMenuDrawerOpen,
   ] = React.useState(false);
+
+  const tabsToDisplay = displayTeamViewTab ? [...tabs, teamViewTab] : tabs;
 
   const buttons: {
     label: React.Node,
@@ -148,7 +161,7 @@ export const HomePageMenu = ({
       <Paper
         style={{
           ...(isMobileOrSmallScreen ? styles.mobileMenu : styles.desktopMenu),
-          borderRight: `1px solid ${GDevelopTheme.home.separator.color}`,
+          borderRight: `1px solid ${gdevelopTheme.home.separator.color}`,
         }}
         square
         background="dark"
@@ -162,7 +175,7 @@ export const HomePageMenu = ({
               <DoubleChevronArrowRight />
             </IconButton>
           )}
-          {tabs.map(({ label, tab, getIcon, id }) => (
+          {tabsToDisplay.map(({ label, tab, getIcon, id }) => (
             <VerticalTabButton
               key={id}
               label={label}
@@ -196,7 +209,7 @@ export const HomePageMenu = ({
         PaperProps={{
           style: {
             ...styles.drawerContent,
-            backgroundColor: GDevelopTheme.home.header.backgroundColor,
+            backgroundColor: gdevelopTheme.home.header.backgroundColor,
           },
           className: 'safe-area-aware-left-container',
         }}
@@ -221,7 +234,7 @@ export const HomePageMenu = ({
                     <DoubleChevronArrowLeft />
                   </IconButton>
                 </Line>
-                {tabs.map(({ label, tab, getIcon }, index) => (
+                {tabsToDisplay.map(({ label, tab, getIcon }, index) => (
                   <VerticalTabButton
                     key={index}
                     label={label}

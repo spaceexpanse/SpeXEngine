@@ -25,6 +25,8 @@ import { AnnouncementsFeedContext } from '../../../AnnouncementsFeed/Announcemen
 import { type ResourceManagementProps } from '../../../ResourcesList/ResourceSource';
 import RouterContext from '../../RouterContext';
 import { AssetStoreContext } from '../../../AssetStore/AssetStoreContext';
+import TeamSection from './TeamSection';
+import TeamProvider from '../../../Profile/Team/TeamProvider';
 
 type Props = {|
   project: ?gdProject,
@@ -206,7 +208,7 @@ export const HomePage = React.memo<Props>(
       return (
         <I18n>
           {({ i18n }) => (
-            <>
+            <TeamProvider>
               <Column expand noMargin noOverflowParent>
                 <Line expand noMargin useFullHeight>
                   <HomePageMenu
@@ -216,9 +218,11 @@ export const HomePage = React.memo<Props>(
                     onOpenAbout={onOpenAbout}
                   />
                   <Column noMargin expand noOverflowParent>
-                    {activeTab !== 'community' && !!announcements && (
-                      <AnnouncementsFeed canClose level="urgent" addMargins />
-                    )}
+                    {activeTab !== 'community' &&
+                      activeTab !== 'team-view' &&
+                      !!announcements && (
+                        <AnnouncementsFeed canClose level="urgent" addMargins />
+                      )}
                     {activeTab === 'get-started' && (
                       <GetStartedSection
                         onTabChange={setActiveTab}
@@ -268,10 +272,17 @@ export const HomePage = React.memo<Props>(
                         canInstallPrivateAsset={canInstallPrivateAsset}
                       />
                     )}
+                    {activeTab === 'team-view' && (
+                      <TeamSection
+                        project={project}
+                        onOpenRecentFile={onOpenRecentFile}
+                        storageProviders={storageProviders}
+                      />
+                    )}
                   </Column>
                 </Line>
               </Column>
-            </>
+            </TeamProvider>
           )}
         </I18n>
       );
