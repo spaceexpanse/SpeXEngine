@@ -11,7 +11,7 @@ module.exports = [
     "languageCode": "ar_SA",
     "languageName": "Arabic",
     "languageNativeName": "اللغة العربية",
-    "translationRatio": 0.9670091941590049
+    "translationRatio": 0.9672796106003245
   },
   {
     "languageCode": "az_AZ",
